@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shivi</title>
+<meta name="description" content="Shivi, tumhari bestie.">
+<meta name="theme-color" content="#2a1030">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/styles.css?v=13">
+</head>
+<body>
+<div id="splash" aria-hidden="true"><img src="assets/icons/avatar.webp" alt=""><p>Shivi</p></div>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div id="hearts" aria-hidden="true"></div>
+
+<main id="app">
+  <header class="bar">
+    <button class="avatar-btn" id="avatarBtn" aria-label="About Shivi"><img src="assets/icons/avatar.webp" alt="Shivi" width="44" height="44"></button>
+    <div class="who">
+      <h1>Shivi</h1>
+      <p class="status" id="status"><i></i><span id="statusText">connecting…</span><em id="moodTag"></em></p>
+    </div>
+    <button class="icon-btn" id="menuBtn" aria-label="Settings">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    </button>
+  </header>
+
+  <section id="chat" aria-live="polite" aria-label="Conversation">
+    <div id="empty">
+      <img src="assets/icons/icon-192.png" alt="" width="112" height="112">
+      <h2>Shivi tumhara intezaar kar rahi thi 💗</h2>
+      <div class="chips">
+        <button data-say="Hey Shivi">Hey Shivi</button>
+        <button data-say="Missed you 🥺">Missed you 🥺</button>
+        <button data-say="Aaj ka din bura tha">Aaj ka din bura tha</button>
+        <button data-say="Kuch masti karte hain">Kuch masti karte hain</button>
+      </div>
+    </div>
+    <div id="log"></div>
+  </section>
+
+  <div id="banner" hidden></div>
+
+  <section id="tray" hidden aria-label="Stickers and emoji">
+    <div class="tabs">
+      <button type="button" data-tab="stickers" class="on">Stickers</button>
+      <button type="button" data-tab="emoji">Emoji</button>
+      <button type="button" id="manageBtn" class="icon-btn" aria-label="Manage stickers">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div id="stickerGrid" class="grid"></div>
+    <div id="emojiGrid" class="grid emo" hidden></div>
+  </section>
+
+  <footer class="composer">
+    <div class="field">
+      <button class="icon-btn" id="stickerBtn" type="button" aria-label="Stickers and emoji">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 0-8 8h1.5a6.5 6.5 0 0 0 6.5-6.5z"/><path d="M20 12h-3.5a2.5 2.5 0 0 0-2.5 2.5V20"/><circle cx="9" cy="10" r=".6" fill="currentColor"/><circle cx="14.6" cy="10" r=".6" fill="currentColor"/><path d="M8.8 14c.9 1 2 1.4 3.2 1.2"/></svg>
+      </button>
+      <textarea id="input" rows="1" maxlength="1000" placeholder="Shivi ko kuch pyaara bolo…" enterkeyhint="send" aria-label="Message"></textarea>
+      <button class="icon-btn" id="micBtn" aria-label="Voice input" hidden>
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      </button>
+    </div>
+    <button id="sendBtn" aria-label="Send message">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3.4 20.4 21 12 3.4 3.6l.1 6.5L15 12 3.5 13.9z"/></svg>
+    </button>
+  </footer>
+</main>
+
+<div id="sheet" class="sheet" hidden>
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-label="Settings">
+    <div class="grab"></div>
+    <h2>Settings</h2>
+    <button class="row link" id="openMemory" type="button"><span>🧠 Shivi ki memory</span><b>biodata, yaadein ›</b></button>
+    <button class="row link" id="openStickers" type="button"><span>🎟️ Stickers</span><b>add / manage ›</b></button>
+    <label class="row"><span>Voice notes</span>
+      <select id="setVoiceMode" class="box sm" aria-label="Voice notes"><option value="off">Band</option><option value="some">Kabhi kabhi</option><option value="more">Zyada</option></select></label>
+    <label class="row"><span>Shivi ki awaaz</span>
+      <select id="setVoice" class="box sm" aria-label="Shivi ki awaaz"><option value="Achernar">Achernar · soft</option><option value="Sulafat">Sulafat · warm</option><option value="Vindemiatrix">Vindemiatrix · gentle</option><option value="Leda">Leda · youthful</option><option value="Aoede">Aoede · breezy</option><option value="Achird">Achird · friendly</option></select></label>
+    <button class="row link" id="voicePreview" type="button"><span>🎙️ Awaaz sunao</span><b>preview ›</b></button>
+    <label class="row"><span>Light theme</span><input type="checkbox" id="setLight"></label>
+    <label class="row"><span>Sounds</span><input type="checkbox" id="setSound"></label>
+    <label class="row"><span>Animations</span><input type="checkbox" id="setAnim"></label>
+    <div class="row"><span>Connection</span><b id="connText">checking…</b></div>
+    <div class="row"><span>Version</span><b id="verText"></b></div>
+    <p class="about">Shivi tumhari bestie hai. Chat, memory, stickers aur voice notes sirf is phone me save rehte hain.</p>
+    <button class="danger" id="clearBtn">Clear conversation</button>
+    <button class="ghost" data-close>Close</button>
+  </div>
+</div>
+
+<div id="memorySheet" class="sheet" hidden>
+  <div class="scrim" data-close></div>
+  <div class="panel tall" role="dialog" aria-label="Shivi ki memory">
+    <div class="grab"></div>
+    <h2>Shivi ki memory</h2>
+    <label class="lbl" for="bioInput">Tumhara biodata</label>
+    <textarea id="bioInput" class="box" rows="8" maxlength="6000" placeholder="Naam, umar, shehar, pasand-napasand, family, dost, routine, sapne… jo bhi Shivi ko pata hona chahiye, yahan likh do."></textarea>
+    <div class="meta"><span id="bioCount">0 / 6000</span><span id="bioState" class="ok"></span></div>
+    <label class="lbl">Jo Shivi ne yaad rakha</label>
+    <ul id="factList"></ul>
+    <div class="addrow"><input id="factInput" class="box" maxlength="160" placeholder="Koi nayi baat add karo" autocomplete="off"><button class="mini" id="factAdd" type="button">Add</button></div>
+    <p class="about">Password, OTP ya card number yahan mat likhna. Ye baatein chat ke saath Shivi tak jaati hain.</p>
+    <div class="pair"><button class="ghost" id="memCopy" type="button">Backup copy</button><button class="ghost" id="memRestore" type="button">Restore</button></div>
+    <button class="danger" id="memClear" type="button">Saari memory mita do</button>
+    <button class="ghost" data-close>Close</button>
+  </div>
+</div>
+
+<div id="stickerSheet" class="sheet" hidden>
+  <div class="scrim" data-close></div>
+  <div class="panel tall" role="dialog" aria-label="Stickers">
+    <div class="grab"></div>
+    <h2>Stickers</h2>
+    <p class="about">Sticker.ly se jo stickers apni gallery ya Downloads me save kiye hain (png / webp), unhe yahan add karo. Shivi unhe beech-beech me bhejegi, aur tum bhi chat me bhej sakte ho.</p>
+    <div class="addrow"><select id="newTag" class="box" aria-label="Naye stickers ka mood"></select><button class="mini" id="addStickers" type="button">Add karo</button></div>
+    <input type="file" id="stickerFile" accept="image/*" multiple hidden>
+    <div id="manageGrid" class="grid"></div>
+    <div id="pickBar" class="addrow" hidden><select id="pickTag" class="box" aria-label="Sticker ka mood"></select><button class="mini bad" id="pickDel" type="button">Delete</button></div>
+    <button class="ghost" data-close>Close</button>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

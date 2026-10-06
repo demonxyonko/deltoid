@@ -1,0 +1,10 @@
+.env
+.dev.vars
+worker/.dev.vars
+node_modules/
+.wrangler/
+.DS_Store
+# personal data must never go to the public repo
+biodata*
+private/
+*.zip

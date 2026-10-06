@@ -1,0 +1,8 @@
+name = "shivi-api"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Your GitHub Pages origin, e.g. https://yourname.github.io  (comma-separate multiple)
+ALLOWED_ORIGIN = "https://demonxyonko.github.io"
+# The key itself is a secret:  npx wrangler secret put GEMINI_API_KEY
